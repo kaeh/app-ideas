@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 type LevelCard = {
-  label: string;
+  title: string;
+  content: string;
   routerLink: string[];
 };
 
@@ -60,15 +61,21 @@ export class MenuComponent implements OnInit {
       default:
         return [
           {
-            label: 'Beginner',
+            title: 'Beginner',
+            content:
+              'Developers in the early stages of their learning journey. Those who are typically focused on creating user-facing applications.',
             routerLink: ['.', Level.Beginner],
           },
           {
-            label: 'Intermediate',
+            title: 'Intermediate',
+            content:
+              'Developers at an intermediate stage of learning and experience. They are comfortable in UI/UX, using development tools, and building apps that use API services.',
             routerLink: ['.', Level.Intermediate],
           },
           {
-            label: 'Advanced',
+            title: 'Advanced',
+            content:
+              'Developers who have all of the above, and are learning more advanced techniques like implementing backend applications and database services.',
             routerLink: ['.', Level.Advanced],
           },
         ];

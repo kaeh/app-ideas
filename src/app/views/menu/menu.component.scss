@@ -1,3 +1,27 @@
+.header-container {
+  text-align: center;
+
+  mat-icon {
+    position: relative;
+    top: 3px;
+  }
+}
+
 h1 {
   display: inline-block;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.card {
+  width: 300px;
+  height: auto;
+
+  margin-right: 15px;
 }

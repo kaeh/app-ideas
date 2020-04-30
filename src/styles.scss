@@ -12,3 +12,9 @@ body {
 .clickable {
   cursor: pointer;
 }
+
+.vertical-centered {
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(-50%);
+}
