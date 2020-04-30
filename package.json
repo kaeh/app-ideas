@@ -4,10 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:ci": "jest --runInBand",
+    "build": "ng build --prod",
+    "test": "ng test",
+    "test:watch": "ng test --watch",
+    "test:ci": "ng test --runInBand",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
