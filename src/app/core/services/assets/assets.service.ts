@@ -14,8 +14,11 @@ export class AssetsService {
   }
 
   public getReadme(resource: string, level?: Level): Observable<string> {
-    const fileName = resource.endsWith('.md') ? resource : `${resource}.md`;
-    const filePath = level ? `assets/${level}/${fileName}` : `assets/${fileName}`;
+    if (!resource.endsWith('.md')) {
+      return this.getReadme(`${resource}.md`, level);
+    }
+
+    const filePath = level ? `assets/${level}/${resource}` : `assets/${resource}`;
 
     return this._httpClient.get(filePath, { responseType: 'text' });
   }
