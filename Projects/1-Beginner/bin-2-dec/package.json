@@ -1,0 +1,24 @@
+{
+  "name": "bin-2-dec",
+  "version": "0.0.0",
+  "description": "Bin2Dec allows the user to enter strings of up to 8 binary digits, 0's",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaeh/app-ideas/Projects/1-Beginner/bin-2-dec"
+  },
+  "keywords": [
+    "converter",
+    "binary",
+    "decimal"
+  ],
+  "author": "kaeh",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^25.5.2"
+  }
+}
