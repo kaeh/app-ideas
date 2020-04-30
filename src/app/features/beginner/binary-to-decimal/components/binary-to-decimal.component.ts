@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-binary-to-decimal',
+  selector: 'kaeh-binary-to-decimal',
   templateUrl: './binary-to-decimal.component.html',
   styleUrls: ['./binary-to-decimal.component.scss'],
 })
