@@ -1,0 +1,40 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "types": [
+      "jest"
+    ],
+    "paths": {
+      "@kaeh/core/*": [
+        "src/app/core/*"
+      ],
+      "@kaeh/shared/*": [
+        "src/app/shared/*"
+      ],
+      "@kaeh/views/*": [
+        "src/app/shared/*"
+      ],
+      "@kaeh/*": [
+        "src/app/*"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
+}
