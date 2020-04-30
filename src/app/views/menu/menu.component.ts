@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Level } from '@kaeh/shared/enums';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { BeginnerCards } from './beginner-cards.const';
+import { MainMenuCards } from './main-menu-cards.const';
 
 type LevelCard = {
   title: string;
@@ -54,31 +56,13 @@ export class MenuComponent implements OnInit {
   private _setCards(level: Level): LevelCard[] {
     switch (level) {
       case Level.Beginner:
+        return BeginnerCards;
       case Level.Intermediate:
       case Level.Advanced:
         console.error('Not implemented yet.');
         return [];
       default:
-        return [
-          {
-            title: 'Beginner',
-            content:
-              'Developers in the early stages of their learning journey. Those who are typically focused on creating user-facing applications.',
-            routerLink: ['.', Level.Beginner],
-          },
-          {
-            title: 'Intermediate',
-            content:
-              'Developers at an intermediate stage of learning and experience. They are comfortable in UI/UX, using development tools, and building apps that use API services.',
-            routerLink: ['.', Level.Intermediate],
-          },
-          {
-            title: 'Advanced',
-            content:
-              'Developers who have all of the above, and are learning more advanced techniques like implementing backend applications and database services.',
-            routerLink: ['.', Level.Advanced],
-          },
-        ];
+        return MainMenuCards;
     }
   }
 }
