@@ -12,9 +12,14 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'bin-2-dec',
-    loadChildren: () =>
-      import('./features/beginner/binary-to-decimal/binary-to-decimal.module').then((m) => m.BinaryToDecimalModule),
+    path: 'beginner',
+    children: [
+      {
+        path: 'bin-2-dec',
+        loadChildren: () =>
+          import('./features/beginner/binary-to-decimal/binary-to-decimal.module').then((m) => m.BinaryToDecimalModule),
+      },
+    ],
   },
   // Handle all other routes
   { path: '**', redirectTo: '' },
