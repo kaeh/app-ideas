@@ -1,27 +1,12 @@
-.header-container {
-  text-align: center;
-
-  mat-icon {
-    position: relative;
-    top: 3px;
-  }
-}
-
-h1 {
-  display: inline-block;
-}
-
-.flex-container {
+nav {
+  background: #3f51b5;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
+  -webkit-box-align: center;
   align-items: center;
+  padding: 8px 16px;
+  color: #fff;
 }
-.card {
-  width: 300px;
-  height: auto;
-
-  margin-right: 15px;
+.title-container {
+  text-align: center;
 }
