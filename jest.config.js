@@ -1,6 +1,8 @@
-const { pathsToModuleNameMapper } = require("ts-jest/utils");
-const { compilerOptions } = require("./tsconfig.json");
+import { pathsToModuleNameMapper } from 'ts-jest/utils';
+import * as tsconfig from './tsconfig.json';
 
 module.exports = {
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: "<rootDir>/" }),
+  moduleNameMapper: pathsToModuleNameMapper(tsconfig.compilerOptions.paths, {
+    prefix: '<rootDir>/',
+  }),
 };
