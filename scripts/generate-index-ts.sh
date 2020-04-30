@@ -18,7 +18,7 @@ do
         shift # Remove --extension= from processing
         ;;
         -d|--dry-run)
-        DRY_RUN=0
+        DRY_RUN=1
         shift # Remove --dry-run name from processing
         ;;
         *)
@@ -36,7 +36,7 @@ done
 CURRENT_INDEX_FILE=${DIRECTORY}/index.ts
 BACKUP_INDEX_FILE=${CURRENT_INDEX_FILE}.bkp
 
-if [[ ${DRY_RUN} -eq 0 ]]; then
+if [[ ${DRY_RUN} -eq 1 ]]; then
     echo "Simulation de création du nouveau fichier index.ts"
 else
     [ -f ${CURRENT_INDEX_FILE} ] && echo "Backup du fichier index.ts existant" && mv ${CURRENT_INDEX_FILE} ${BACKUP_INDEX_FILE}
@@ -51,16 +51,15 @@ find ${DIRECTORY} -name "*.${EXTENSION}" | while read -r LINE ; do
     # On enlève l'extension .ts
     FILE=${FILE//".ts"}
     # On génère la ligne d'export
-    GENERATED_LINE="export * from \"./$FILE\";"
     # En cas de dry run, on l'affiche dans la console, sinon on l'ajoute au fichier index.ts en cours de création
-    if [[ ${DRY_RUN} -eq 0 ]]; then
-        echo ${GENERATED_LINE}
+    if [[ ${DRY_RUN} -eq 1 ]]; then
+        echo "export * from './$FILE';"
     else
-        echo ${GENERATED_LINE} >> ${CURRENT_INDEX_FILE}
+        echo "export * from './$FILE';" >> ${CURRENT_INDEX_FILE}
     fi
 done
 
-if [[ ! ${DRY_RUN} -eq 0 ]]; then
+if [[ ! ${DRY_RUN} -eq 1 ]]; then
     # Vérification que le fichier généré contient quelque chose, si non on le supprime
     [ ! -s ${CURRENT_INDEX_FILE} ] && echo "Fichier généré vide : suppression" && rm ${CURRENT_INDEX_FILE}
 
