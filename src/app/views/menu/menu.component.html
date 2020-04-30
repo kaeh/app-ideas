@@ -1,1 +1,10 @@
-<p>menu works!</p>
+<ng-container *ngIf="displayBackIcon$ | async">
+  <mat-icon aria-hidden="false" aria-label="Back to previous page" class="clickable" (click)="navigateBack()">
+    keyboard_arrow_left
+  </mat-icon>
+</ng-container>
+<h1>{{ title$ | async }}</h1>
+
+<ng-container *ngFor="let card of cards$ | async">
+  <mat-card class="card clickable" (click)="navigateTo(card.routerLink)">{{ card.label }}</mat-card>
+</ng-container>

@@ -1,10 +1,12 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { SharedModule } from '@kaeh/shared/shared.module';
 import { MenuComponent } from './menu/menu.component';
 
 const Components = [MenuComponent];
 
 @NgModule({
   declarations: Components,
+  imports: [SharedModule],
   exports: Components,
 })
 export class ViewsModule {
