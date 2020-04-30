@@ -19,15 +19,6 @@
       "jest"
     ],
     "paths": {
-      "@kaeh/core/*": [
-        "src/app/core/*"
-      ],
-      "@kaeh/shared/*": [
-        "src/app/shared/*"
-      ],
-      "@kaeh/views/*": [
-        "src/app/shared/*"
-      ],
       "@kaeh/*": [
         "src/app/*"
       ]
