@@ -1,5 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SharedMaterialModule } from '@kaeh/shared/shared.material.module';
 import { MarkdownModule } from 'ngx-markdown';
@@ -11,7 +12,13 @@ describe(MenuComponent.name, () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule, SharedMaterialModule, MarkdownModule.forRoot()],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        SharedMaterialModule,
+        MarkdownModule.forRoot(),
+        BrowserAnimationsModule,
+      ],
       declarations: [MenuComponent],
     }).compileComponents();
   }));

@@ -1,1 +1,11 @@
-<p>binary-to-decimal works!</p>
+<mat-form-field appearance="fill">
+  <mat-label>Binary</mat-label>
+  <input matInput [formControl]="binaryControl" />
+</mat-form-field>
+
+<p>To</p>
+
+<mat-form-field appearance="fill">
+  <mat-label>Decimal</mat-label>
+  <input disabled matInput [value]="decimal$ | async" />
+</mat-form-field>
