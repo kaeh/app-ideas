@@ -1,8 +1,9 @@
-import { pathsToModuleNameMapper } from 'ts-jest/utils';
-import * as tsconfig from './tsconfig.json';
+/* eslint-disable @typescript-eslint/no-var-requires */
+const { pathsToModuleNameMapper } = require('ts-jest/utils');
+const { compilerOptions } = require('./tsconfig.json');
 
 module.exports = {
-  moduleNameMapper: pathsToModuleNameMapper(tsconfig.compilerOptions.paths, {
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: '<rootDir>/',
   }),
 };
