@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Location } from '@angular/common';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AssetsService } from '@kaeh/core/services';
+import { ExerciseStateService } from '@kaeh/core/states';
 import { ExerciseMenu } from '@kaeh/shared/interfaces';
-import { Observable } from 'rxjs';
 import { LevelsMenu } from './level-menu.const';
 
 @Component({
@@ -11,27 +11,23 @@ import { LevelsMenu } from './level-menu.const';
   styleUrls: ['./menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MenuComponent {
-  public title = 'App Ideas by Florin Pop, coded by Kaeh';
+export class MenuComponent implements OnInit {
   public levelMenus = LevelsMenu;
-  public pageDescription$: Observable<string>;
 
-  public constructor(private readonly _router: Router, private readonly _assetsService: AssetsService) {}
+  public constructor(
+    private readonly _router: Router,
+    private readonly _exerciseStateService: ExerciseStateService,
+    private readonly _location: Location
+  ) {}
 
   public ngOnInit(): void {
-    const sanitizedCurrentUrl = this._router.url.replace('/', '').split('/').pop();
-    if (sanitizedCurrentUrl) {
-      const currentMenu = this.levelMenus.find((lm) => lm.content.has(sanitizedCurrentUrl)).content.get(sanitizedCurrentUrl);
-
-      this.title = currentMenu.title;
-      this.pageDescription$ = this._assetsService.getReadme(currentMenu.markdownPath);
-    } else {
-      this.pageDescription$ = this._assetsService.getMainReadme();
-    }
+    const sanitizedCurrentUrl = this._location.path().replace('/', '').split('/').pop();
+    const currentMenu = LevelsMenu.find((lm) => lm.content.has(sanitizedCurrentUrl))?.content.get(sanitizedCurrentUrl);
+    this._exerciseStateService.selectedExercise = currentMenu;
   }
 
   public navigateTo(menu: ExerciseMenu): void {
-    this.title = menu.title;
+    this._exerciseStateService.selectedExercise = menu;
     this._router.navigate(menu.routerLink);
   }
 }

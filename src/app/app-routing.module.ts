@@ -1,19 +1,16 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MenuComponent } from '@kaeh/views';
-import { BeginnerMenuRoutes } from './shared/enums';
+import { BeginnerMenuRoutes, Level } from './shared/enums';
 
 const routes: Routes = [
   {
     path: '',
     children: [
-      { path: '', component: MenuComponent },
-      { path: ':level', component: MenuComponent },
       {
-        path: 'beginner',
-        component: MenuComponent,
+        path: Level.Beginner,
         children: [
+          { path: '', redirectTo: BeginnerMenuRoutes.BinaryToDecimal, pathMatch: 'full' },
           {
             path: BeginnerMenuRoutes.BinaryToDecimal,
             loadChildren: () =>

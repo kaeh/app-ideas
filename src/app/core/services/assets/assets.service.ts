@@ -9,10 +9,6 @@ import { Observable } from 'rxjs';
 export class AssetsService {
   public constructor(private readonly _httpClient: HttpClient) {}
 
-  public getMainReadme(): Observable<string> {
-    return this.getReadme('README.md');
-  }
-
   public getReadme(resource: string, level?: Level): Observable<string> {
     if (!resource.endsWith('.md')) {
       return this.getReadme(`${resource}.md`, level);

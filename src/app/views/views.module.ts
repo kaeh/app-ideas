@@ -1,9 +1,10 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '@kaeh/shared/shared.module';
+import { ExerciseComponent } from './exercise/exercise.component';
 import { MenuComponent } from './menu/menu.component';
 
-const Components = [MenuComponent];
+const Components = [MenuComponent, ExerciseComponent];
 
 @NgModule({
   declarations: Components,
