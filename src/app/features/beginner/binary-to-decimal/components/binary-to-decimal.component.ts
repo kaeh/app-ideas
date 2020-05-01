@@ -1,9 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { forceMaxLength, keepOnlyValidCharacters } from '@kaeh/shared/functions';
-import { noop, Observable, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, takeUntil, tap } from 'rxjs/operators';
+import { noop, Observable } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map, tap } from 'rxjs/operators';
 
 const DecimalInputMaxLength = 8;
 
@@ -12,10 +12,9 @@ const DecimalInputMaxLength = 8;
   templateUrl: './binary-to-decimal.component.html',
   styleUrls: ['./binary-to-decimal.component.scss'],
 })
-export class BinaryToDecimalComponent implements OnInit, OnDestroy {
+export class BinaryToDecimalComponent implements OnInit {
   public binaryControl = new FormControl();
   public decimal$: Observable<string>;
-  private _destroy$ = new Subject<void>();
 
   public constructor(private readonly _snackBar: MatSnackBar) {}
 
@@ -28,14 +27,8 @@ export class BinaryToDecimalComponent implements OnInit, OnDestroy {
       map((v) => forceMaxLength(v, DecimalInputMaxLength)),
       tap((v) => this.binaryControl.setValue(v)),
       debounceTime(300),
-      map((v) => this._convertToDecimal(v)),
-      takeUntil(this._destroy$)
+      map((v) => this._convertToDecimalV2(v))
     );
-  }
-
-  public ngOnDestroy(): void {
-    this._destroy$.next();
-    this._destroy$.unsubscribe();
   }
 
   private _convertToDecimal(binaryValue: string): string {
@@ -43,8 +36,30 @@ export class BinaryToDecimalComponent implements OnInit, OnDestroy {
     return convert >= 0 ? convert.toString() : '';
   }
 
+  private _convertToDecimalV2(binaryString: string, index?: number, convert?: number): string {
+    if (!binaryString?.length) {
+      return convert?.toString() ?? '';
+    }
+
+    // Using (+binaryString).toString() allow us to remove all 0 at the left hand of the string
+    // Example: +"0011" is converted to 11 then reconverted to "11" but +"1100" will still be "1100"
+    let currentBinaryString = (+binaryString).toString();
+    let currentIndex = index ?? 0;
+    let currentConvert = convert ?? 0;
+
+    // take last character, convert to number
+    const currentBinaryNumber = +currentBinaryString.slice(currentBinaryString.length - 1);
+    // Remove last character from string
+    currentBinaryString = currentBinaryString.substring(0, currentBinaryString.length - 1);
+    // Apply conversion
+    currentConvert += currentBinaryNumber * Math.pow(2, currentIndex);
+
+    // Recursively call the method
+    return this._convertToDecimalV2(currentBinaryString, ++currentIndex, currentConvert);
+  }
+
   private _notifyInputHadError(): void {
-    this._snackBar.open('You can only insert binary', undefined, {
+    this._snackBar.open('You can only insert binary numbers (0 | 1)', undefined, {
       duration: 2000,
       panelClass: 'snack-error',
     });
