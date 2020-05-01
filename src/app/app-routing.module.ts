@@ -19,6 +19,13 @@ const routes: Routes = [
             loadChildren: () =>
               import('./features/beginner/binary-to-decimal/binary-to-decimal.module').then((m) => m.BinaryToDecimalModule),
           },
+          {
+            path: BeginnerMenuRoutes.BorderRadiusPreviewer,
+            loadChildren: () =>
+              import('./features/beginner/border-radius-previewer/border-radius-previewer.module').then(
+                (m) => m.BorderRadiusPreviewerModule
+              ),
+          },
         ],
       },
     ],
