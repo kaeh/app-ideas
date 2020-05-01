@@ -12,7 +12,7 @@ describe('string functions', () => {
       const actual = keepOnlyValidCharacters(stringWithInvalidCharacters, ...validCharacters);
 
       // Then the invalid characters should have bee remove
-      expect(actual).toBe('01');
+      expect(actual).toEqual({ result: '01', hadErrors: true });
     });
   });
 
@@ -27,7 +27,7 @@ describe('string functions', () => {
       const actual = forceMaxLength(string, maxLength);
 
       // Then the string should have been sliced to the given max length
-      expect(actual).toBe('i am waa');
+      expect(actual).toEqual('i am waa');
     });
 
     it('should do nothing on valid string', () => {
