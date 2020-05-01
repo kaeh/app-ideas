@@ -1,3 +1,27 @@
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.sliders {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  height: 330px;
+  width: 360px;
+  margin-right: 50px;
+
+  .border-radius-slider {
+    margin-right: 30px;
+  }
+}
+
 .previewer {
   height: 200px;
   width: 200px;
