@@ -1,1 +1,18 @@
-<p>border-radius-previewer works!</p>
+<ng-container *ngFor="let borderRadiusStyleKeyValue of borderRadiusStyleClone | keyvalue">
+  <div>
+    {{ borderRadiusStyleKeyValue.key }}
+    <mat-slider
+      (input)="borderRadiusStyle[borderRadiusStyleKeyValue.key] = $event.value + 'px'"
+      thumbLabel
+      tickInterval="1"
+      min="0"
+      max="100"
+    ></mat-slider>
+  </div>
+</ng-container>
+
+<div class="previewer">
+  <div class="bordered" [ngStyle]="borderRadiusStyle">
+    <div class="text vertical-centered text-centered">Preview</div>
+  </div>
+</div>
