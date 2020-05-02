@@ -16,19 +16,18 @@ jobs:
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
-          node-version: "12.x"
+          node-version: '12.x'
       - name: Build
         run: |
           npm install -g @angular/cli
           yarn
           npm run test:ci
-          ng build --prod --base-href="/apps-ideas/"
+          ng deploy --base-href=/app-ideas/ --name="kaeh" --email=corentin.grosdemouge@gmail.com
       - name: Test
         run: npm run test:ci
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v2
         env:
-          # ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BASE_BRANCH: master
           BRANCH: gh-pages
