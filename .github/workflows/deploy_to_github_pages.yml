@@ -22,7 +22,7 @@ jobs:
           npm install -g @angular/cli
           yarn
           npm run test:ci
-          ng build --prod --base-href="/app-ideas/" --name="kaeh" --email="corentin.grosdemouge@gmail.com"
+          ng build --prod --base-href="/app-ideas/"
       - name: Test
         run: npm run test:ci
       - name: Deploy
