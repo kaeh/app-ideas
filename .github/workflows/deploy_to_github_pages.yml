@@ -29,6 +29,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v2
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BASE_BRANCH: master
+          # BASE_BRANCH: master
           BRANCH: gh-pages
           FOLDER: dist/app-ideas
