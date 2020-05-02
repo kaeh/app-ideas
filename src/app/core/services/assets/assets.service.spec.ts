@@ -24,12 +24,12 @@ describe(AssetsService.name, () => {
     expect(service).toBeTruthy();
   });
 
-  describe(nameof<AssetsService>('getMainReadme'), () => {
+  describe(nameof<AssetsService>('getReadme'), () => {
     it('should add .md when parameters does not have it', () => {
       // Given a resource without .md extension
       const resource = 'a_resource';
 
-      // When I call service.getMainReadme with this resource
+      // When I call service.getReadme with this resource
       service.getReadme(resource).subscribe();
 
       // Then the resource should have been append with .md extension
@@ -42,7 +42,7 @@ describe(AssetsService.name, () => {
       // Given a resource with .md extension
       const resource = 'a_resource.md';
 
-      // When I call service.getMainReadme with this resource
+      // When I call service.getReadme with this resource
       service.getReadme(resource).subscribe();
 
       // Then the resource shouldn't have been change
@@ -57,7 +57,7 @@ describe(AssetsService.name, () => {
       // and a level
       const level = Level.Beginner;
 
-      // When I call service.getMainReadme with those parameters
+      // When I call service.getReadme with those parameters
       service.getReadme(resource, level).subscribe();
 
       // Then the level directory should have been prepend to the resource
@@ -72,7 +72,7 @@ describe(AssetsService.name, () => {
       // and no level
       const level = undefined;
 
-      // When I call service.getMainReadme with those parameters
+      // When I call service.getReadme with those parameters
       service.getReadme(resource, level).subscribe();
 
       // Then the level directory should have been prepend to the resource
