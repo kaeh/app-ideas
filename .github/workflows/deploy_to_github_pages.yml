@@ -18,9 +18,7 @@ jobs:
         with:
           node-version: '12.x'
       - name: Install Dependencies
-        run: |
-          npm install -g @angular/cli
-          yarn
+        run: yarn
       - name: Build
         run: ng build --prod --base-href="/app-ideas/"
       - name: Test
