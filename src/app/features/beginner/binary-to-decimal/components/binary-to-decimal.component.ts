@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { NotificationService } from '@kaeh/core/services';
 import { forceMaxLength, keepOnlyValidCharacters } from '@kaeh/shared/functions';
 import { noop, Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, tap } from 'rxjs/operators';
@@ -16,7 +16,7 @@ export class BinaryToDecimalComponent implements OnInit {
   public binaryControl = new FormControl();
   public decimal$: Observable<string>;
 
-  public constructor(private readonly _snackBar: MatSnackBar) {}
+  public constructor(private readonly _notificationService: NotificationService) {}
 
   public ngOnInit(): void {
     this.decimal$ = this.binaryControl.valueChanges.pipe(
@@ -59,9 +59,6 @@ export class BinaryToDecimalComponent implements OnInit {
   }
 
   private _notifyInputHadError(): void {
-    this._snackBar.open('You can only insert binary numbers (0 | 1)', undefined, {
-      duration: 2000,
-      panelClass: 'snack-error',
-    });
+    this._notificationService.notifyFailure('You can only insert binary numbers (0 | 1)');
   }
 }
