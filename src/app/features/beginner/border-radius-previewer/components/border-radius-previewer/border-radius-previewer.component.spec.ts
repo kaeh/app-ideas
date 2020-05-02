@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { SharedMaterialModule } from '@kaeh/shared/shared.material.module';
 import { BorderRadiusPreviewerComponent } from './border-radius-previewer.component';
 
 describe(BorderRadiusPreviewerComponent.name, () => {
@@ -7,6 +8,7 @@ describe(BorderRadiusPreviewerComponent.name, () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [SharedMaterialModule],
       declarations: [BorderRadiusPreviewerComponent],
     }).compileComponents();
   }));

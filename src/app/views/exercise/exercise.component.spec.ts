@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { SharedMaterialModule } from '@kaeh/shared/shared.material.module';
 import { ExerciseComponent } from './exercise.component';
 
 describe(ExerciseComponent.name, () => {
@@ -7,7 +8,7 @@ describe(ExerciseComponent.name, () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [],
+      imports: [SharedMaterialModule],
       declarations: [ExerciseComponent],
     }).compileComponents();
   }));
