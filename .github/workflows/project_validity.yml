@@ -5,7 +5,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: [master, develop]
+    branches: [develop]
   pull_request:
     branches: [master, develop]
 
@@ -13,16 +13,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
       - uses: actions/checkout@v2
       - name: Verify project validity
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '12.x'
       - run: yarn
       - run: npm run build --if-present
       - run: npm run test:ci
