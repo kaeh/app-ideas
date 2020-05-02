@@ -31,11 +31,6 @@ export class BinaryToDecimalComponent implements OnInit {
     );
   }
 
-  private _convertToDecimal(binaryValue: string): string {
-    const convert = parseInt(binaryValue, 2);
-    return convert >= 0 ? convert.toString() : '';
-  }
-
   private _convertToDecimalV2(binaryString: string, index?: number, convert?: number): string {
     if (!binaryString?.length) {
       return convert?.toString() ?? '';
