@@ -49,7 +49,7 @@ describe(NotificationService.name, () => {
     });
   });
 
-  describe(nameof<NotificationService>('notifySuccess'), () => {
+  describe(nameof<NotificationService>('notifyFailure'), () => {
     it('should display a snack bar with material warn classes', () => {
       // When the function is called
       service.notifyFailure();
