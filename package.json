@@ -69,7 +69,7 @@
     "verbose": true,
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "<rootDir>/src/app/**/{!(*.module),}.ts"
+      "<rootDir>/src/app/**/{!(*.module|index),}.ts"
     ]
   }
 }
