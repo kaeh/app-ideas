@@ -23,6 +23,8 @@ jobs:
           yarn
           npm run test:ci
           ng build --prod --base-href="/apps-ideas/"
+      - name: Test
+        run: npm run test:ci
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v2
         env:
