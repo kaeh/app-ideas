@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ClipboardService, NotificationService } from '@kaeh/core/services';
 
 type BorderRadius = {
   'border-top-left-radius': string;
@@ -32,4 +33,28 @@ export class BorderRadiusPreviewerComponent {
   };
   /** Clone of borderRadiusStyle, used to create sliders but should not be updated */
   public readonly borderRadiusStyleClone = Object.assign({}, this.borderRadiusStyle);
+
+  public constructor(
+    private readonly _clipboardService: ClipboardService,
+    private readonly _notificationService: NotificationService
+  ) {}
+
+  public copyToClipboard(): void {
+    const success = this._clipboardService.copy(this.borderRadiusStyle, (val: BorderRadius) =>
+      this._borderRadiusStyleToString(val)
+    );
+
+    success
+      ? this._notificationService.notifySuccess('Border radius copied to clipboard')
+      : this._notificationService.notifyFailure('Something went wrong');
+  }
+
+  private _borderRadiusStyleToString(borderRadiusStyle: BorderRadius): string {
+    let result = '';
+    for (const key in borderRadiusStyle) {
+      result += `${key}: ${this.borderRadiusStyle[key]};\r\n`;
+    }
+
+    return result;
+  }
 }
