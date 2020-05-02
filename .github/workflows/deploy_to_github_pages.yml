@@ -20,7 +20,7 @@ jobs:
       - name: Install Dependencies
         run: yarn
       - name: Build
-        run: ng build --prod --base-href="/app-ideas/"
+        run: npm run build:deploy
       - name: Test
         run: npm run test:ci
       - name: Deploy
