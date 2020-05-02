@@ -15,7 +15,7 @@ describe(NotificationService.name, () => {
     });
     service = TestBed.inject(NotificationService);
     snackBarMock = TestBed.inject(MatSnackBar);
-    spyOn(snackBarMock, 'open');
+    snackBarMock.open = jest.fn();
   });
 
   it('should be created', () => {
