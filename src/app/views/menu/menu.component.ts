@@ -2,8 +2,8 @@ import { Location } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ExerciseStateService } from '@kaeh/core/states';
+import { LevelsMenu } from '@kaeh/shared/consts';
 import { ExerciseMenu } from '@kaeh/shared/interfaces';
-import { LevelsMenu } from './level-menu.const';
 
 @Component({
   selector: 'kaeh-menu',
