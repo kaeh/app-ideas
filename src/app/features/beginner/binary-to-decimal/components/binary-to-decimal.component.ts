@@ -32,7 +32,7 @@ export class BinaryToDecimalComponent implements OnInit {
   }
 
   private _convertToDecimalV2(binaryString: string, index?: number, convert?: number): string {
-    if (!binaryString?.length) {
+    if (!binaryString.length) {
       return convert?.toString() ?? '';
     }
 
