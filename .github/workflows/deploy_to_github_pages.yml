@@ -17,12 +17,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - name: Build
+      - name: Install Dependencies
         run: |
           npm install -g @angular/cli
           yarn
-          npm run test:ci
-          ng build --prod --base-href="/app-ideas/"
+      - name: Build
+        run: ng build --prod --base-href="/app-ideas/"
       - name: Test
         run: npm run test:ci
       - name: Deploy
