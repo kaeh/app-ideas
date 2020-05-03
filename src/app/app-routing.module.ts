@@ -22,6 +22,10 @@ const routes: Routes = [
                 (m) => m.BorderRadiusPreviewerModule
               ),
           },
+          {
+            path: BeginnerMenuRoutes.Calculator,
+            loadChildren: () => import('./features/beginner/calculator/calculator.module').then((m) => m.CalculatorModule),
+          },
         ],
       },
     ],
