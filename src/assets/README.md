@@ -41,42 +41,42 @@ required to complete them.
 
 ### Tier-1: Beginner Projects
 
-| Name                                                                              | Short Description                                          | Tier       |
-| --------------------------------------------------------------------------------- | ---------------------------------------------------------- | ---------- |
-| [Bin2Dec](./Projects/1-Beginner/Bin2Dec-App.md)                                   | Binary-to-Decimal number converter                         | 1-Beginner |
-| [Border Radius Previewer](./Projects/1-Beginner/Border-Radius-Previewer.md)       | Preview how CSS3 border-radius values affect an element    | 1-Beginner |
-| [Calculator](./Projects/1-Beginner/Calculator-App.md)                             | Calculator                                                 | 1-Beginner |
-| [Christmas Lights](./Projects/1-Beginner/Christmas-Lights-App.md)                 | Simulate a string of Christmas lights                      | 1-Beginner |
-| [Cause Effect App](./Projects/1-Beginner/Cause-Effect-App.md)                     | Click list item to display item details                    | 1-Beginner |
-| [Color Cycle](./Projects/1-Beginner/Color-Cycle-App.md)                           | Cycle a color value through incremental changes            | 1-Beginner |
-| [Countdown Timer](./Projects/1-Beginner/Countdown-Timer-App.md)                   | Event Countdown timer                                      | 1-Beginner |
-| [CSV2JSON App](./Projects/1-Beginner/CSV2JSON-App.md)                             | CSV to JSON converter                                      | 1-Beginner |
-| [Dollars to Cents](./Projects/1-Beginner/Dollars-To-Cents-App.md)                 | Convert dollars to cents                                   | 1-Beginner |
-| [Dynamic CSS Variables](./Projects/1-Beginner/Dynamic-CSSVar-app.md)              | Dynamically change CSS variable settings                   | 1-Beginner |
-| [First DB App](./Projects/1-Beginner/First-DB-App.md)                             | Your first Database app!                                   | 1-Beginner |
-| [Flip Image](./Projects/1-Beginner/Flip-Image-App.md)                             | Change the orientation of images across two axes           | 1-Beginner |
-| [GitHub Status](./Projects/1-Beginner/GitHub-Status-App.md)                       | Display Current GitHub Status                              | 1-Beginner |
-| [Hello](./Projects/1-Beginner/Hello-App.md)                                       | User native language greeting                              | 1-Beginner |
-| [IOT Mailbox Simulator](./Projects/1-Beginner/IOT-Mailbox-App.md)                 | Use callbacks to check your snail mail                     | 1-Beginner |
-| [JS Input Validation](./Projects/1-Beginner/Javascript-Validation-With-Regex.md)  | Script to validate inputs entered by a user using RegEx    | 1-Beginner |
-| [JSON2CSV App](./Projects/1-Beginner/JSON2CSV-App.md)                             | JSON to CSV converter                                      | 1-Beginner |
-| [Key Value](./Projects/1-Beginner/Key-Value-App.md)                               | Keyboard Event Values                                      | 1-Beginner |
-| [Lorem Ipsum Generator](./Projects/1-Beginner/Lorem-Ipsum-Generator.md)           | Generate lorem ipsum placeholder text                      | 1-Beginner |
-| [Notes App](./Projects/1-Beginner/Notes-App.md)                                   | Create an online note pad                                  | 1-Beginner |
-| [Pearson Regression](./Projects/1-Beginner/Pearson-Regression-App.md)             | Calculate the correlation coefficient for two sets of data | 1-Beginner |
-| [Pomodoro Clock](./Projects/1-Beginner/Pomodoro-Clock.md)                         | Task timer to aid personal productivity                    | 1-Beginner |
-| [Product Landing Page](./Projects/1-Beginner/Product-Landing-Page.md)             | Showcase product details for possible buyers               | 1-Beginner |
-| [Quiz App](./Projects/1-Beginner/Quiz-App.md)                                     | Test your knowledge by answering questions                 | 1-Beginner |
-| [Recipe App](./Projects/1-Beginner/Recipe-App.md)                                 | Recipe                                                     | 1-Beginner |
-| [Random Meal Generator](./Projects/1-Beginner/Random-Meal-Generator.md)           | Generate random meals                                      | 1-Beginner |
-| [Roman to Decimal Converter](./Projects/1-Beginner/Roman-to-Decimal-Converter.md) | Convert Roman to Decimal numbers                           | 1-Beginner |
-| [Slider Design](./Projects/1-Beginner/Slider-Design.md)                           | Display images using a slider control                      | 1-Beginner |
-| [Stopwatch App](./Projects/1-Beginner/Stopwatch-App.md)                           | Count time spent on activities                             | 1-Beginner |
-| [TrueOrFalse](./Projects/1-Beginner/True-or-False-App.md)                         | Identify the result of a conditional comparison            | 1-Beginner |
-| [Vigenere Cipher](./Projects/1-Beginner/Vigenere-Cipher.md)                       | Encrypt text using the Vigenere Cypher                     | 1-Beginner |
-| [Wind Chill](./Projects/1-Beginner/Windchill-App.md)                              | Calculate the windchill factor from an actual temperature  | 1-Beginner |
-| [Word Frequency](./Projects/1-Beginner/Word-Frequency-App.md)                     | Calculate word frequency in a block of text                | 1-Beginner |
-| [Weather App](./Projects/1-Beginner/Weather-App.md)                               | Get the temperature, weather condition of a city.          | 1-Beginner |
+| Name                                                                | Short Description                                          | Tier       |
+| ------------------------------------------------------------------- | ---------------------------------------------------------- | ---------- |
+| [Bin2Dec](./beginner/bin-2-dec)                                     | Binary-to-Decimal number converter                         | 1-Beginner |
+| [Border Radius Previewer](./beginner/border-radius-previewer)       | Preview how CSS3 border-radius values affect an element    | 1-Beginner |
+| [Calculator](./beginner/calculator)                                 | Calculator                                                 | 1-Beginner |
+| [Christmas Lights](./beginner/christmas-lights)                     | Simulate a string of Christmas lights                      | 1-Beginner |
+| [Cause Effect App](./beginner/cause-effect)                         | Click list item to display item details                    | 1-Beginner |
+| [Color Cycle](./beginner/color-cycle)                               | Cycle a color value through incremental changes            | 1-Beginner |
+| [Countdown Timer](./beginner/countdown-timer)                       | Event Countdown timer                                      | 1-Beginner |
+| [CSV2JSON App](./beginner/csv-2-json)                               | CSV to JSON converter                                      | 1-Beginner |
+| [Dollars to Cents](./beginner/dollars-to-cents)                     | Convert dollars to cents                                   | 1-Beginner |
+| [Dynamic CSS Variables](./beginner/dynamic-css-var)                 | Dynamically change CSS variable settings                   | 1-Beginner |
+| [First DB App](./beginner/first-db)                                 | Your first Database app!                                   | 1-Beginner |
+| [Flip Image](./beginner/flip-image)                                 | Change the orientation of images across two axes           | 1-Beginner |
+| [GitHub Status](./beginner/github-status)                           | Display Current GitHub Status                              | 1-Beginner |
+| [Hello](./beginner/hello)                                           | User native language greeting                              | 1-Beginner |
+| [IOT Mailbox Simulator](./beginner/iot-mailbox)                     | Use callbacks to check your snail mail                     | 1-Beginner |
+| [JS Input Validation](./beginner/javascript-validation-with-regex)  | Script to validate inputs entered by a user using RegEx    | 1-Beginner |
+| [JSON2CSV App](./beginner/json-2-csv)                               | JSON to CSV converter                                      | 1-Beginner |
+| [Key Value](./beginner/key-value)                                   | Keyboard Event Values                                      | 1-Beginner |
+| [Lorem Ipsum Generator](./beginner/lorem-ipsum-generator)           | Generate lorem ipsum placeholder text                      | 1-Beginner |
+| [Notes App](./beginner/notes)                                       | Create an online note pad                                  | 1-Beginner |
+| [Pearson Regression](./beginner/pearson-regression)                 | Calculate the correlation coefficient for two sets of data | 1-Beginner |
+| [Pomodoro Clock](./beginner/pomodoro-clock)                         | Task timer to aid personal productivity                    | 1-Beginner |
+| [Product Landing Page](./beginner/product-landing-page)             | Showcase product details for possible buyers               | 1-Beginner |
+| [Quiz App](./beginner/quiz)                                         | Test your knowledge by answering questions                 | 1-Beginner |
+| [Recipe App](./beginner/recipe)                                     | Recipe                                                     | 1-Beginner |
+| [Random Meal Generator](./beginner/random-meal-generator)           | Generate random meals                                      | 1-Beginner |
+| [Roman to Decimal Converter](./beginner/roman-to-decimal-converter) | Convert Roman to Decimal numbers                           | 1-Beginner |
+| [Slider Design](./beginner/slider-design)                           | Display images using a slider control                      | 1-Beginner |
+| [Stopwatch App](./beginner/stopwatch)                               | Count time spent on activities                             | 1-Beginner |
+| [TrueOrFalse](./beginner/true-or-false)                             | Identify the result of a conditional comparison            | 1-Beginner |
+| [Vigenere Cipher](./beginner/vigenere-cipher)                       | Encrypt text using the Vigenere Cypher                     | 1-Beginner |
+| [Wind Chill](./beginner/windchill)                                  | Calculate the windchill factor from an actual temperature  | 1-Beginner |
+| [Word Frequency](./beginner/word-frequency)                         | Calculate word frequency in a block of text                | 1-Beginner |
+| [Weather App](./beginner/weather)                                   | Get the temperature, weather condition of a city.          | 1-Beginner |
 
 ### Tier-2: Intermediate Projects
 
@@ -84,7 +84,7 @@ required to complete them.
 | --------------------------------------------------------------------------------- | -------------------------------------------------- | -------------- |
 | [Bit Masks](./Projects/2-Intermediate/Bit-Masks-App.md)                           | Using Bit Masks for Conditions                     | 2-Intermediate |
 | [Book Finder App](./Projects/2-Intermediate/Book-Finder-App.md)                   | Search for books by multiple criteria              | 2-Intermediate |
-| [Calculator CLI](./Projects/2-Intermediate/Calculator-CLI.md)                   | Create a basic calculator cli.             | 2-Intermediate |
+| [Calculator CLI](./Projects/2-Intermediate/Calculator-CLI.md)                     | Create a basic calculator cli.                     | 2-Intermediate |
 | [Card Memory Game](./Projects/2-Intermediate/Card-Memory-Game.md)                 | Memorize and match hidden images                   | 2-Intermediate |
 | [Charity Finder App](./Projects/2-Intermediate/Charity-Finder-App.md)             | Find a Global Charity to donate to                 | 2-Intermediate |
 | [Chrome Theme Extension](./Projects/2-Intermediate/Chrome-Theme-Extension.md)     | Build your own chrome theme extention.             | 2-Intermediate |
@@ -122,7 +122,7 @@ required to complete them.
 | [Battleship Bot](./Projects/3-Advanced/Battleship-Bot.md)                     | Create a Discord bot that plays Battleship                          | 3-Advanced |
 | [Battleship Game Engine](./Projects/3-Advanced/Battleship-Game-Engine.md)     | Create a callable engine to play the Battleship game                | 3-Advanced |
 | [Boole Bots Game](./Projects/3-Advanced/Boole-Bot-Game.md)                    | Battling Bots driven by Boolean algebra                             | 3-Advanced |
-| [Calendar](./Projects/1-Beginner/Calendar-App.md)                             | Create your own Calendar                                            | 3-Advanced |
+| [Calendar](./Projects/3-Advanced/Calendar-App.md)                             | Create your own Calendar                                            | 3-Advanced |
 | [Calorie Counter](./Projects/3-Advanced/Calorie-Counter-App.md)               | Calorie Counter Nutrition App                                       | 3-Advanced |
 | [Chat App](./Projects/3-Advanced/Chat-App.md)                                 | Real-time chat interface                                            | 3-Advanced |
 | [Contribution Tracker App](./Projects/3-Advanced/Contribution-Tracker-App.md) | Track funds donated to charity                                      | 3-Advanced |
