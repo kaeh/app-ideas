@@ -1,4 +1,4 @@
-import { BeginnerMenuRoutes } from '@kaeh/shared/enums';
+import { BeginnerMenuRoutes, Level } from '@kaeh/shared/enums';
 import { generateMenuItems } from '@kaeh/shared/functions';
 import { SimpleMenu } from '@kaeh/shared/types';
 
@@ -7,4 +7,4 @@ const menuItems: SimpleMenu[] = [
   { title: 'Border radius Previewer', path: BeginnerMenuRoutes.BorderRadiusPreviewer },
 ];
 
-export const BeginnerMenu = generateMenuItems(menuItems);
+export const BeginnerMenu = generateMenuItems(Level.Beginner, menuItems);
