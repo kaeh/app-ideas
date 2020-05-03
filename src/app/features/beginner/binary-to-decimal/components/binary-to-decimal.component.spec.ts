@@ -54,7 +54,7 @@ describe(BinaryToDecimalComponent.name, () => {
       component.binaryControl.setValue('1100');
     });
 
-    it('should return an empty string if convertion fails', (done) => {
+    it('should return an empty string if conversion fails', (done) => {
       // Given the component is fresh
       // Then the binary value should have been converted to an empty string
       component.decimal$.subscribe((decimal) => {
