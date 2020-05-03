@@ -13,8 +13,7 @@ const routes: Routes = [
           { path: '', redirectTo: BeginnerMenuRoutes.BinaryToDecimal, pathMatch: 'full' },
           {
             path: BeginnerMenuRoutes.BinaryToDecimal,
-            loadChildren: () =>
-              import('./features/beginner/binary-to-decimal/binary-to-decimal.module').then((m) => m.BinaryToDecimalModule),
+            loadChildren: () => import('./features/beginner/bin-2-dec/bin-2-dec.module').then((m) => m.BinaryToDecimalModule),
           },
           {
             path: BeginnerMenuRoutes.BorderRadiusPreviewer,

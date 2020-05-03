@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '@kaeh/shared/shared.module';
-import { BinaryToDecimalRoutingModule } from './binary-to-decimal-routing.module';
-import { BinaryToDecimalComponent } from './components/binary-to-decimal.component';
+import { BinaryToDecimalRoutingModule } from './bin-2-dec-routing.module';
+import { BinaryToDecimalComponent } from './components/bin-2-dec.component';
 
 @NgModule({
   declarations: [BinaryToDecimalComponent],

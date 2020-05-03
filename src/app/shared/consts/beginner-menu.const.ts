@@ -1,14 +1,10 @@
-import { BeginnerMenuRoutes, Level } from '@kaeh/shared/enums';
-import { ExerciseMenu } from '@kaeh/shared/interfaces';
+import { BeginnerMenuRoutes } from '@kaeh/shared/enums';
+import { generateMenuItems } from '@kaeh/shared/functions';
+import { SimpleMenu } from '@kaeh/shared/types';
 
-export const BeginnerMenu = new Map<BeginnerMenuRoutes, ExerciseMenu>()
-  .set(BeginnerMenuRoutes.BinaryToDecimal, {
-    title: 'Binary to Decimal',
-    routerLink: [`${Level.Beginner}/${BeginnerMenuRoutes.BinaryToDecimal}`],
-    markdownPath: `${Level.Beginner}/binary-to-decimal`,
-  })
-  .set(BeginnerMenuRoutes.BorderRadiusPreviewer, {
-    title: 'Border radius Previewer',
-    routerLink: [`${Level.Beginner}/${BeginnerMenuRoutes.BorderRadiusPreviewer}`],
-    markdownPath: `${Level.Beginner}/border-radius-previewer`,
-  });
+const menuItems: SimpleMenu<BeginnerMenuRoutes>[] = [
+  { title: 'Binary to Decimal', path: BeginnerMenuRoutes.BinaryToDecimal },
+  { title: 'Border radius Previewer', path: BeginnerMenuRoutes.BorderRadiusPreviewer },
+];
+
+export const BeginnerMenu = generateMenuItems<BeginnerMenuRoutes>(menuItems);

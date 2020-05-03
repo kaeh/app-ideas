@@ -9,8 +9,8 @@ const DecimalInputMaxLength = 8;
 
 @Component({
   selector: 'kaeh-binary-to-decimal',
-  templateUrl: './binary-to-decimal.component.html',
-  styleUrls: ['./binary-to-decimal.component.scss'],
+  templateUrl: './bin-2-dec.component.html',
+  styleUrls: ['./bin-2-dec.component.scss'],
 })
 export class BinaryToDecimalComponent implements OnInit {
   public binaryControl = new FormControl();
