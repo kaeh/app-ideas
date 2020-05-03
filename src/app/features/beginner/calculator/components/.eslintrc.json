@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "../../../../../../.eslintrc.json"
+  ],
+  "rules": {
+    "no-restricted-globals": [
+      2,
+      "fdescribe",
+      "fit",
+      "eval"
+    ]
+  }
+}
