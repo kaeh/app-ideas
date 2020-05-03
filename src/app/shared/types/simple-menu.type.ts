@@ -1,1 +1,1 @@
-export type SimpleMenu<T> = { title: string; path: T };
+export type SimpleMenu = { title: string; path: string };

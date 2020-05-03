@@ -11,10 +11,10 @@ export function generateMenuItem(level: Level, title: string, path: string): Exe
   };
 }
 
-export function generateMenuItems<T>(menuItems: SimpleMenu<T>[]): Map<T, ExerciseMenu> {
-  const map = new Map<T, ExerciseMenu>();
+export function generateMenuItems(menuItems: SimpleMenu[]): Map<string, ExerciseMenu> {
+  const map = new Map<string, ExerciseMenu>();
 
-  menuItems.forEach((x) => map.set(x.path, generateMenuItem(Level.Beginner, x.title, (x.path as unknown) as string)));
+  menuItems.forEach((x) => map.set(x.path, generateMenuItem(Level.Beginner, x.title, x.path)));
 
   return map;
 }
