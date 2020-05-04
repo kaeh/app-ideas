@@ -46,11 +46,8 @@ export class BorderRadiusPreviewerComponent {
   }
 
   private _borderRadiusStyleToString(borderRadiusStyle: BorderRadius): string {
-    let result = '';
-    for (const key in borderRadiusStyle) {
-      result += `${key}: ${this.borderRadiusStyle[key]};\r\n`;
-    }
-
-    return result;
+    return Object.keys(borderRadiusStyle)
+      .map((k) => `${k}: ${this.borderRadiusStyle[k]};`)
+      .join('\r\n');
   }
 }

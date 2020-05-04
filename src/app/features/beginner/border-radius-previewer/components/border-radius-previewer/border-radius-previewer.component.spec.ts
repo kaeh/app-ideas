@@ -58,8 +58,7 @@ border-bottom-right-radius: 10px;\r
 border-start-start-radius: 0px;\r
 border-start-end-radius: 0px;\r
 border-end-start-radius: 0px;\r
-border-end-end-radius: 0px;\r
-`;
+border-end-end-radius: 0px;`;
       expect(clipboardMock.copy).toHaveBeenCalledWith(expected);
     });
 
