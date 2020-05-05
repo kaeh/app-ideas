@@ -1,0 +1,12 @@
+:host {
+  display: block;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.display {
+  &.main {
+    height: 50px;
+    font-size: 1.5rem;
+  }
+}

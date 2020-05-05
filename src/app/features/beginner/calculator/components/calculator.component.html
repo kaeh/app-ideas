@@ -1,1 +1,11 @@
 <p>calculator works!</p>
+
+<div class="display main">{{ currentOperation$ | async }}</div>
+<div class="display result">{{ operationResult$ | async }}</div>
+
+<div class="line">
+  <button mat-button (click)="addToOperation(1)">1</button>
+  <button mat-button (click)="addToOperation(2)">2</button>
+  <button mat-button (click)="addToOperation(Operator.Add)"><mat-icon>add</mat-icon></button>
+  <button mat-button (click)="addToOperation(Operator.Multiply)">*</button>
+</div>
