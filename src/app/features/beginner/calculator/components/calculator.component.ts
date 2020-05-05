@@ -32,7 +32,6 @@ export class CalculatorComponent implements OnInit, OnDestroy {
 
   @HostListener('window:keyup', ['$event'])
   public onKeyUp(event: KeyboardEvent): void {
-    console.log(event.keyCode);
     switch (event.keyCode) {
       case KeyCodes.Numpad0:
         this.addToOperation(0);
@@ -82,7 +81,6 @@ export class CalculatorComponent implements OnInit, OnDestroy {
       case KeyCodes.Backspace:
         this.backspace();
         break;
-      case KeyCodes.NumpadEnter:
       case KeyCodes.Enter:
         this.computeOperation();
         break;
@@ -132,10 +130,7 @@ export class CalculatorComponent implements OnInit, OnDestroy {
     this.operationResult$ = null;
     this._currentOperationSubject.next(this._currentResult);
     this._initOperationResult$();
-
-    if (this._currentResult.length) {
-      this._replaceDisplayOnNextInput = true;
-    }
+    this._replaceDisplayOnNextInput = true;
   }
 
   private _initCurrentOperation$(): void {

@@ -13,7 +13,6 @@ export enum KeyCodes {
   NumpadMultiply = 106,
   NumpadSubtract = 109,
   NumpadAdd = 107,
-  NumpadEnter = 13,
   NumpadDot = 110,
   Backspace = 8,
   Enter = 13,
