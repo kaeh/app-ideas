@@ -1,12 +1,36 @@
 :host {
   display: block;
-  width: 300px;
+  width: 257px;
   margin: 0 auto;
 }
 
 .display {
+  text-align: right;
   &.main {
     height: 50px;
     font-size: 1.5rem;
+  }
+}
+
+.numpad {
+  width: 192px;
+  display: inline-block;
+}
+
+.operations {
+  background-color: #ededed;
+
+  &.column {
+    width: 65px;
+    display: inline-block;
+    height: 131px;
+
+    button {
+      float: left;
+
+      &.compute {
+        height: 60px;
+      }
+    }
   }
 }

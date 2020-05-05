@@ -1,11 +1,33 @@
-<p>calculator works!</p>
-
 <div class="display main">{{ currentOperation$ | async }}</div>
 <div class="display result">{{ operationResult$ | async }}</div>
 
-<div class="line">
+<div class="operations">
+  <button mat-button (click)="backspace()"><mat-icon>backspace</mat-icon></button>
+  <button mat-button (click)="clear()">C</button>
+  <button mat-button (click)="addToOperation(Operator.Divide)">/</button>
+  <button mat-button (click)="addToOperation(Operator.Multiply)">*</button>
+</div>
+
+<div class="numpad">
+  <button mat-button (click)="addToOperation(7)">7</button>
+  <button mat-button (click)="addToOperation(8)">8</button>
+  <button mat-button (click)="addToOperation(9)">9</button>
+
+  <button mat-button (click)="addToOperation(4)">4</button>
+  <button mat-button (click)="addToOperation(5)">5</button>
+  <button mat-button (click)="addToOperation(6)">6</button>
+
   <button mat-button (click)="addToOperation(1)">1</button>
   <button mat-button (click)="addToOperation(2)">2</button>
+  <button mat-button (click)="addToOperation(3)">3</button>
+
+  <button mat-button></button>
+  <button mat-button (click)="addToOperation(0)">0</button>
+  <button mat-button (click)="addToOperation('.')">.</button>
+</div>
+
+<div class="operations column">
+  <button mat-button (click)="addToOperation(Operator.Subtract)"><mat-icon>remove</mat-icon></button>
   <button mat-button (click)="addToOperation(Operator.Add)"><mat-icon>add</mat-icon></button>
-  <button mat-button (click)="addToOperation(Operator.Multiply)">*</button>
+  <button mat-raised-button color="primary" class="compute" (click)="computeOperation()">=</button>
 </div>
