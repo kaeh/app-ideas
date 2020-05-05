@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Operator } from '@kaeh/shared/enums';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { KeyCodes, Operator } from '@kaeh/shared/enums';
 import { evaluateOperation } from '@kaeh/shared/functions';
 import { isOperator, OperationElement } from '@kaeh/shared/types';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -18,6 +18,7 @@ export class CalculatorComponent implements OnInit, OnDestroy {
   public Operator = Operator;
 
   private _currentResult = '';
+  private _replaceDisplayOnNextInput: boolean;
   private _currentOperationSubject = new BehaviorSubject<string>('');
 
   public ngOnInit(): void {
@@ -27,6 +28,68 @@ export class CalculatorComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this._currentOperationSubject.unsubscribe();
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  public onKeyUp(event: KeyboardEvent): void {
+    console.log(event.keyCode);
+    switch (event.keyCode) {
+      case KeyCodes.Numpad0:
+        this.addToOperation(0);
+        break;
+      case KeyCodes.Numpad1:
+        this.addToOperation(1);
+        break;
+      case KeyCodes.Numpad2:
+        this.addToOperation(2);
+        break;
+      case KeyCodes.Numpad3:
+        this.addToOperation(3);
+        break;
+      case KeyCodes.Numpad4:
+        this.addToOperation(4);
+        break;
+      case KeyCodes.Numpad5:
+        this.addToOperation(5);
+        break;
+      case KeyCodes.Numpad6:
+        this.addToOperation(6);
+        break;
+      case KeyCodes.Numpad7:
+        this.addToOperation(7);
+        break;
+      case KeyCodes.Numpad8:
+        this.addToOperation(8);
+        break;
+      case KeyCodes.Numpad9:
+        this.addToOperation(9);
+        break;
+      case KeyCodes.NumpadDivide:
+        this.addToOperation(Operator.Divide);
+        break;
+      case KeyCodes.NumpadMultiply:
+        this.addToOperation(Operator.Multiply);
+        break;
+      case KeyCodes.NumpadSubtract:
+        this.addToOperation(Operator.Subtract);
+        break;
+      case KeyCodes.NumpadAdd:
+        this.addToOperation(Operator.Add);
+        break;
+      case KeyCodes.NumpadDot:
+        this.addToOperation('.');
+        break;
+      case KeyCodes.Backspace:
+        this.backspace();
+        break;
+      case KeyCodes.NumpadEnter:
+      case KeyCodes.Enter:
+        this.computeOperation();
+        break;
+      case KeyCodes.Delete:
+        this.clear();
+        break;
+    }
   }
 
   public addToOperation(element: OperationElement): void {
@@ -44,8 +107,10 @@ export class CalculatorComponent implements OnInit, OnDestroy {
       }
     }
 
-    currentOperation = this._currentOperationSubject.getValue() + element;
+    const shouldReplaceDisplay = this._replaceDisplayOnNextInput && !isNaN(+element);
+    currentOperation = shouldReplaceDisplay ? element.toString() : this._currentOperationSubject.getValue() + element;
     this._currentOperationSubject.next(currentOperation);
+    this._replaceDisplayOnNextInput = false;
   }
 
   public clear(): void {
@@ -67,6 +132,10 @@ export class CalculatorComponent implements OnInit, OnDestroy {
     this.operationResult$ = null;
     this._currentOperationSubject.next(this._currentResult);
     this._initOperationResult$();
+
+    if (this._currentResult.length) {
+      this._replaceDisplayOnNextInput = true;
+    }
   }
 
   private _initCurrentOperation$(): void {
