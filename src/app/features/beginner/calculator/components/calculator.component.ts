@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Operator } from '@kaeh/shared/enums';
 import { evaluateOperation } from '@kaeh/shared/functions';
 import { isOperator, OperationElement } from '@kaeh/shared/types';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { filter, map, skip, takeUntil, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { filter, map, skip, tap } from 'rxjs/operators';
 
 const allowedOperatorAtFirstPosition = [Operator.Add, Operator.Subtract];
 
@@ -19,7 +19,6 @@ export class CalculatorComponent implements OnInit, OnDestroy {
 
   private _currentResult = '';
   private _currentOperationSubject = new BehaviorSubject<string>('');
-  private _destroy$ = new Subject<void>();
 
   public ngOnInit(): void {
     this._initCurrentOperation$();
@@ -27,8 +26,6 @@ export class CalculatorComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this._destroy$.next();
-    this._destroy$.unsubscribe();
     this._currentOperationSubject.unsubscribe();
   }
 
@@ -42,7 +39,7 @@ export class CalculatorComponent implements OnInit, OnDestroy {
       if ((noOperation || onlyElementIsOperator) && allowedOperatorAtFirstPosition.includes(element)) {
         this._currentOperationSubject.next(element);
         return;
-      } else if (isOperator(lastDisplayedElement)) {
+      } else if (noOperation || isOperator(lastDisplayedElement)) {
         return;
       }
     }
@@ -73,7 +70,7 @@ export class CalculatorComponent implements OnInit, OnDestroy {
   }
 
   private _initCurrentOperation$(): void {
-    this.currentOperation$ = this._currentOperationSubject.asObservable().pipe(takeUntil(this._destroy$));
+    this.currentOperation$ = this._currentOperationSubject.asObservable();
   }
 
   private _initOperationResult$(): void {
@@ -81,9 +78,8 @@ export class CalculatorComponent implements OnInit, OnDestroy {
       skip(1), // Skip first as it show 0 instead
       map(evaluateOperation),
       filter((r) => !isNaN(r)),
-      map((r) => r?.toString() ?? ''),
-      tap((r) => (this._currentResult = r)),
-      takeUntil(this._destroy$)
+      map((r) => r.toString()),
+      tap((r) => (this._currentResult = r))
     );
   }
 }
