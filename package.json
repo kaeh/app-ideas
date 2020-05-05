@@ -73,6 +73,9 @@
     "collectCoverage": true,
     "collectCoverageFrom": [
       "<rootDir>/src/app/**/{!(*.module|index),}.ts"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^@kaeh/(.*)$": "<rootDir>/src/app/$1"
+    }
   }
 }
