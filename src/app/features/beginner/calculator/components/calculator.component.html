@@ -1,7 +1,9 @@
-<div class="display main">{{ currentOperation$ | async }}</div>
+<div class="display main">
+  <span class="vertical-centered">{{ currentOperation$ | async }}</span>
+</div>
 <div class="display result">{{ operationResult$ | async }}</div>
 
-<div class="operations">
+<div class="operations line">
   <button mat-button (click)="backspace()"><mat-icon>backspace</mat-icon></button>
   <button mat-button (click)="clear()">C</button>
   <button mat-button (click)="addToOperation(Operator.Divide)">/</button>
@@ -29,5 +31,5 @@
 <div class="operations column">
   <button mat-button (click)="addToOperation(Operator.Subtract)"><mat-icon>remove</mat-icon></button>
   <button mat-button (click)="addToOperation(Operator.Add)"><mat-icon>add</mat-icon></button>
-  <button mat-raised-button color="primary" class="compute" (click)="computeOperation()">=</button>
+  <button mat-flat-button color="primary" class="compute" (click)="computeOperation()">=</button>
 </div>
