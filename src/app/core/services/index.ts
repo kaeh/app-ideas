@@ -1,2 +1,2 @@
-export * from './assets/assets.service';
 export * from './notification/notification.service';
+export * from './assets/assets.service';
