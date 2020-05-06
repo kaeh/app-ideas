@@ -26,6 +26,11 @@ const routes: Routes = [
             path: BeginnerMenuRoutes.Calculator,
             loadChildren: () => import('./features/beginner/calculator/calculator.module').then((m) => m.CalculatorModule),
           },
+          {
+            path: BeginnerMenuRoutes.ChristmasLights,
+            loadChildren: () =>
+              import('./features/beginner/christmas-lights/christmas-lights.module').then((m) => m.ChristmasLightsModule),
+          },
         ],
       },
     ],
