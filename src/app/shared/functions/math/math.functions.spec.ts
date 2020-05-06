@@ -1,5 +1,5 @@
 import { Operator } from '@kaeh/shared/enums';
-import { compute, computeSubOperations, evaluateOperation } from './math.functions';
+import { compute, computeSubOperations, convertToDecimal, evaluateOperation } from './math.functions';
 
 describe('Math functions', () => {
   describe(compute.name, () => {
@@ -174,6 +174,32 @@ describe('Math functions', () => {
 
       // Then the function should return NaN
       expect(evaluateOperation(operation)).toBeNaN();
+    });
+  });
+  describe(convertToDecimal.name, () => {
+    it('should do nothing if there is nothing to convert', () => {
+      // When i call the method with an empty binary string
+      const actual = convertToDecimal('');
+      // Then the function should return an empty string;
+      expect(actual).toBe('');
+    });
+    it('should return an empty string the binary string is null', () => {
+      // When i call the method with an empty binary string
+      const actual = convertToDecimal(null);
+      // Then the function should return an empty string;
+      expect(actual).toBe('');
+    });
+    it('should return an empty string the binary string is undefined', () => {
+      // When i call the method with an empty binary string
+      const actual = convertToDecimal(undefined);
+      // Then the function should return an empty string;
+      expect(actual).toBe('');
+    });
+    it('should convert 1100 to 12', () => {
+      // When i call the method with 1100
+      const actual = convertToDecimal('1100');
+      // Then the function should convert it to 12
+      expect(actual).toBe('12');
     });
   });
 });

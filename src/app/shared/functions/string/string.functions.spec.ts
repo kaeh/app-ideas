@@ -1,7 +1,13 @@
-import { forceMaxLength, keepOnlyValidCharacters } from '@kaeh/shared/functions';
+import {
+  forceMaxLength,
+  getLastCharacter,
+  getLastCharacterAsNumber,
+  keepOnlyValidCharacters,
+  removeLastCharacter,
+} from '@kaeh/shared/functions';
 
 describe('string functions', () => {
-  describe(keepOnlyValidCharacters.name, () => {
+  describe(keepOnlyValidCharacters.name || 'keepOnlyValidCharacters', () => {
     it('should keep only valid characters from a string', () => {
       // Given a string
       const stringWithInvalidCharacters = 'i have 0invalid characters1.';
@@ -16,7 +22,7 @@ describe('string functions', () => {
     });
   });
 
-  describe(forceMaxLength.name, () => {
+  describe(forceMaxLength.name || 'forceMaxLength', () => {
     it('should force max length on a too big string', () => {
       // Given a max length
       const maxLength = 8;
@@ -44,6 +50,120 @@ describe('string functions', () => {
       // Then the string should have been sliced to the given max length
       expect(actualWith8Chars).toBe("i'm good");
       expect(actualWithLessThan8Chars).toBe('good');
+    });
+  });
+
+  describe(getLastCharacter.name || 'getLastCharacter', () => {
+    it('should get the last character of a string', () => {
+      // Given a string
+      const str = 'Hello there !!';
+      // When i call the getLastCharacter function
+      const actual = getLastCharacter(str);
+      // Then the result should be the last character of the string
+      expect(actual).toBe('!');
+    });
+
+    it('should return an empty string if input string is null', () => {
+      // Given a null string
+      const str = null;
+      // When i call the getLastCharacter function
+      const actual = getLastCharacter(str);
+      // Then the result should be the last character of the string
+      expect(actual).toBe('');
+    });
+
+    it('should return an empty string if input string is undefined', () => {
+      // Given a undefined string
+      const str = undefined;
+      // When i call the getLastCharacter function
+      const actual = getLastCharacter(str);
+      // Then the result should be the last character of the string
+      expect(actual).toBe('');
+    });
+
+    it('should return an empty string if input string is empty', () => {
+      // Given an empty string
+      const str = '';
+      // When i call the getLastCharacter function
+      const actual = getLastCharacter(str);
+      // Then the result should be the last character of the string
+      expect(actual).toBe('');
+    });
+  });
+
+  describe(getLastCharacterAsNumber.name || 'getLastCharacterAsNumber', () => {
+    it('should get the last character of a string as a number', () => {
+      // Given a string
+      const str = 'Hello there !!1';
+      // When i call the getLastCharacterAsNumber function
+      const actual = getLastCharacterAsNumber(str);
+      // Then the result should be the last character of the string
+      expect(actual).toBe(1);
+    });
+
+    it('should return a 0 if input string is null', () => {
+      // Given a null string
+      const str = null;
+      // When i call the getLastCharacterAsNumber function
+      const actual = getLastCharacterAsNumber(str);
+      // Then the result should be the last character of the string
+      expect(actual).toBe(0);
+    });
+
+    it('should return a 0 if input string is undefined', () => {
+      // Given a undefined string
+      const str = undefined;
+      // When i call the getLastCharacterAsNumber function
+      const actual = getLastCharacterAsNumber(str);
+      // Then the result should be the last character of the string
+      expect(actual).toBe(0);
+    });
+
+    it('should return a 0 if input string is empty', () => {
+      // Given an empty string
+      const str = '';
+      // When i call the getLastCharacterAsNumber function
+      const actual = getLastCharacterAsNumber(str);
+      // Then the result should be the last character of the string
+      expect(actual).toBe(0);
+    });
+  });
+
+  describe(removeLastCharacter.name || 'removeLastCharacter', () => {
+    it('should remove the last character of the string', () => {
+      // Given a string
+      const str = 'Hello there !!';
+      // When i call the removeLastCharacter function
+      const actual = removeLastCharacter(str);
+      // Then the result should be the last character of the string
+      expect(actual).toBe('Hello there !');
+    });
+
+    it('should return an empty string if input string is null', () => {
+      // Given a null string
+      const str = null;
+      // When i call the removeLastCharacter function
+      const actual = removeLastCharacter(str);
+      // Then the result should be the last character of the string
+      expect(actual).toBe('');
+    });
+
+    it('should return an empty string if input string is undefined', () => {
+      // Given a undefined string
+      const str = undefined;
+      // When i call the removeLastCharacter function
+      const actual = removeLastCharacter(str);
+      // Then the result should be the last character of the string
+      expect(actual).toBe('');
+    });
+
+    it('should return an empty string if input string is empty', () => {
+      // Given an empty string
+      const str = '';
+      // When i call the removeLastCharacter function
+      const actual = removeLastCharacter(str);
+      // Then the result should be the last character of the string
+      expect(actual).toBe('');
     });
   });
 });

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { KeyCodes, Operator } from '@kaeh/shared/enums';
-import { evaluateOperation } from '@kaeh/shared/functions';
+import { evaluateOperation, getLastCharacter, removeLastCharacter } from '@kaeh/shared/functions';
 import { isOperator, OperationElement } from '@kaeh/shared/types';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter, map, skip, tap } from 'rxjs/operators';
@@ -93,7 +93,7 @@ export class CalculatorComponent implements OnInit, OnDestroy {
 
   public addToOperation(element: OperationElement): void {
     let currentOperation = this._currentOperationSubject.getValue();
-    const lastDisplayedElement = currentOperation.slice(-1) as OperationElement;
+    const lastDisplayedElement = getLastCharacter(currentOperation) as OperationElement;
 
     if (isOperator(element)) {
       const noOperation = !currentOperation.length;
@@ -123,7 +123,7 @@ export class CalculatorComponent implements OnInit, OnDestroy {
   public backspace(): void {
     const currentOperation = this._currentOperationSubject.getValue();
     if (currentOperation.length) {
-      this._currentOperationSubject.next(currentOperation.slice(0, -1));
+      this._currentOperationSubject.next(removeLastCharacter(currentOperation));
     }
   }
 
