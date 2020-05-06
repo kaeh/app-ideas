@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { KeyCodes, Operator } from '@kaeh/shared/enums';
 import { evaluateOperation } from '@kaeh/shared/functions';
 import { isOperator, OperationElement } from '@kaeh/shared/types';
@@ -11,6 +11,7 @@ const allowedOperatorAtFirstPosition = [Operator.Add, Operator.Subtract];
   selector: 'kaeh-calculator',
   templateUrl: './calculator.component.html',
   styleUrls: ['./calculator.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalculatorComponent implements OnInit, OnDestroy {
   public currentOperation$: Observable<string>;

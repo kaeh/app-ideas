@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { NotificationService } from '@kaeh/core/services';
 import { forceMaxLength, keepOnlyValidCharacters } from '@kaeh/shared/functions';
@@ -11,6 +11,7 @@ const DecimalInputMaxLength = 8;
   selector: 'kaeh-binary-to-decimal',
   templateUrl: './bin-2-dec.component.html',
   styleUrls: ['./bin-2-dec.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BinaryToDecimalComponent implements OnInit {
   public binaryControl = new FormControl();
