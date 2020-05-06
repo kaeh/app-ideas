@@ -1,4 +1,7 @@
-import { AdvancedMenuRoutes } from '@kaeh/shared/enums';
-import { ExerciseMenu } from '@kaeh/shared/interfaces';
+import { Level } from '@kaeh/shared/enums';
+import { generateMenuItems } from '@kaeh/shared/functions';
+import { SimpleMenu } from '@kaeh/shared/types';
 
-export const AdvancedMenu = new Map<AdvancedMenuRoutes, ExerciseMenu>();
+const menuItems: SimpleMenu[] = [];
+
+export const AdvancedMenu = generateMenuItems(Level.Advanced, menuItems);
