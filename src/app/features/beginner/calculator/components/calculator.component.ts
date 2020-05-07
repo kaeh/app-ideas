@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { ChangeDetectionStrategy, Component, HostListener, Inject, OnDestroy, OnInit } from '@angular/core';
 import { KeyCodes, Operator } from '@kaeh/shared/enums';
 import { evaluateOperation, getLastCharacter, removeLastCharacter } from '@kaeh/shared/functions';
 import { isOperator, OperationElement } from '@kaeh/shared/types';
@@ -22,7 +23,11 @@ export class CalculatorComponent implements OnInit, OnDestroy {
   private _replaceDisplayOnNextInput: boolean;
   private _currentOperationSubject = new BehaviorSubject<string>('');
 
+  public constructor(@Inject(DOCUMENT) private readonly _document: Document) {}
+
   public ngOnInit(): void {
+    const activeElement = this._document.activeElement as HTMLElement;
+    activeElement.blur();
     this._initCurrentOperation$();
     this._initOperationResult$();
   }
