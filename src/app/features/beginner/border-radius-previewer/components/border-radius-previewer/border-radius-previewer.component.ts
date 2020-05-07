@@ -47,7 +47,7 @@ export class BorderRadiusPreviewerComponent {
 
   private _borderRadiusStyleToString(borderRadiusStyle: BorderRadius): string {
     return Object.keys(borderRadiusStyle)
-      .map((k) => `${k}: ${this.borderRadiusStyle[k]};`)
+      .map((k) => `${k}: ${borderRadiusStyle[k]};`)
       .join('\r\n');
   }
 }
