@@ -3,4 +3,5 @@ export enum BeginnerMenuRoutes {
   BorderRadiusPreviewer = 'border-radius-previewer',
   Calculator = 'calculator',
   ChristmasLights = 'christmas-lights',
+  CauseEffect = 'cause-effect',
 }

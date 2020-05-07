@@ -6,7 +6,8 @@ const menuItems: SimpleMenu[] = [
   { title: 'Binary to Decimal', path: BeginnerMenuRoutes.BinaryToDecimal },
   { title: 'Border radius Previewer', path: BeginnerMenuRoutes.BorderRadiusPreviewer },
   { title: 'Calculator', path: BeginnerMenuRoutes.Calculator },
-  { title: 'Christmas Lights', path: BeginnerMenuRoutes.ChristmasLights },
+  { title: 'Cause-Effect', path: BeginnerMenuRoutes.CauseEffect },
+  // { title: 'Christmas Lights', path: BeginnerMenuRoutes.ChristmasLights },
 ];
 
 export const BeginnerMenu = generateMenuItems(Level.Beginner, menuItems);

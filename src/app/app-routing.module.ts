@@ -27,6 +27,10 @@ const routes: Routes = [
             loadChildren: () => import('./features/beginner/calculator/calculator.module').then((m) => m.CalculatorModule),
           },
           {
+            path: BeginnerMenuRoutes.CauseEffect,
+            loadChildren: () => import('./features/beginner/cause-effect/cause-effect.module').then((m) => m.CauseEffectModule),
+          },
+          {
             path: BeginnerMenuRoutes.ChristmasLights,
             loadChildren: () =>
               import('./features/beginner/christmas-lights/christmas-lights.module').then((m) => m.ChristmasLightsModule),
