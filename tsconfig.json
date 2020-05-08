@@ -19,6 +19,9 @@
       "jest"
     ],
     "paths": {
+      "@kaeh/cause-effect/*": [
+        "src/app/features/beginner/cause-effect/*"
+      ],
       "@kaeh/*": [
         "src/app/*"
       ]
