@@ -1,10 +1,13 @@
+@mixin selectedEffect {
+  font-weight: bold;
+}
+
 .person-list-item {
   &:hover {
-    font-weight: bold;
+    @include selectedEffect;
   }
 
   &.selected {
-    font-weight: bold;
-    text-decoration: underline;
+    @include selectedEffect;
   }
 }
