@@ -11,7 +11,7 @@ export function generateSingleMenuItem(level: Level, title: string, path: string
   };
 }
 
-export function generateMenuItems(level: Level, menuItems: SimpleMenu[]): Map<string, ExerciseMenu> {
+export function generateMenuItems(level: Level, menuItems: ReadonlyArray<SimpleMenu>): Map<string, ExerciseMenu> {
   const map = new Map<string, ExerciseMenu>();
 
   menuItems?.forEach((x) => map.set(x.path, generateSingleMenuItem(level, x.title, x.path)));

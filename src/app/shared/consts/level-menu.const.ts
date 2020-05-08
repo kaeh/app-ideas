@@ -4,7 +4,7 @@ import { AdvancedMenu } from './advanced-menu.const';
 import { BeginnerMenu } from './beginner-menu.const';
 import { IntermediateMenu } from './intermediate-menu.const';
 
-export const LevelsMenu = [
+export const LevelsMenu: ReadonlyArray<LevelMenu> = [
   {
     level: Level.Beginner,
     title: 'Beginner',
@@ -22,4 +22,4 @@ export const LevelsMenu = [
     title: 'Advanced',
     content: AdvancedMenu,
   },
-] as LevelMenu[];
+];
