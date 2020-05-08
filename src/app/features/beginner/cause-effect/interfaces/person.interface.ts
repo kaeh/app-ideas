@@ -1,9 +1,9 @@
 export interface Person {
-  name: string;
-  street: string;
-  city: string;
-  state: string;
-  country: string;
-  telephone: string;
-  birthday: Date;
+  readonly id: string;
+  readonly name: string;
+  readonly street: string;
+  readonly city: string;
+  readonly state: string;
+  readonly telephone: string;
+  readonly birthday: Date;
 }

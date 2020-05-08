@@ -1,1 +1,7 @@
-<p>persons-list works!</p>
+<mat-list>
+  <ng-container *ngFor="let person of dataset">
+    <mat-list-item class="clickable" [ngClass]="{ selected: selectedPerson?.id === person.id }" (click)="selectPerson(person)">
+      {{ person.name }}
+    </mat-list-item>
+  </ng-container>
+</mat-list>
