@@ -1,3 +1,10 @@
-.selected {
-  text-decoration: underline;
+.person-list-item {
+  &:hover {
+    font-weight: bold;
+  }
+
+  &.selected {
+    font-weight: bold;
+    text-decoration: underline;
+  }
 }
