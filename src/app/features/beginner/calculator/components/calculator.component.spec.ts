@@ -1,37 +1,27 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { KeyCodes, Operator } from '@kaeh/shared/enums';
 import { nameof } from '@kaeh/shared/functions';
-import { SharedModule } from '@kaeh/shared/shared.module';
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
+import { CalculatorModule } from '../calculator.module';
 import { CalculatorComponent } from './calculator.component';
 
 describe(CalculatorComponent.name, () => {
-  let component: CalculatorComponent;
-  let fixture: ComponentFixture<CalculatorComponent>;
-  let keyUpKeyCodeMock: jest.SpyInstance;
+  let spectator: Spectator<CalculatorComponent>;
+  const createComponent = createComponentFactory({
+    component: CalculatorComponent,
+    imports: [CalculatorModule],
+    declareComponent: false,
+  });
   const keyUpEvent = new KeyboardEvent('keyup', {
     bubbles: true,
     cancelable: true,
     shiftKey: false,
   });
+  const keyUpKeyCodeMock = jest.spyOn(keyUpEvent, 'keyCode', 'get');
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [CalculatorComponent],
-      imports: [SharedModule],
-    }).compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CalculatorComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-
-    // Mock keyup event
-    keyUpKeyCodeMock = jest.spyOn(keyUpEvent, 'keyCode', 'get');
-  });
+  beforeEach(() => (spectator = createComponent()));
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeTruthy();
   });
 
   describe(nameof<CalculatorComponent>('addToOperation'), () => {
@@ -40,10 +30,10 @@ describe(CalculatorComponent.name, () => {
       const expected = Operator.Add;
 
       // When I call the addToOperation function with only this character
-      component.addToOperation(expected);
+      spectator.component.addToOperation(expected);
 
       // Then I should only have this character in display
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toEqual(expected);
         done();
       });
@@ -53,10 +43,10 @@ describe(CalculatorComponent.name, () => {
       const expected = Operator.Subtract;
 
       // When I call the addToOperation function with only this character
-      component.addToOperation(expected);
+      spectator.component.addToOperation(expected);
 
       // Then I should only have this character in display
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toEqual(expected);
         done();
       });
@@ -66,10 +56,10 @@ describe(CalculatorComponent.name, () => {
       const expected = '.';
 
       // When I call the addToOperation function with only this character
-      component.addToOperation(expected);
+      spectator.component.addToOperation(expected);
 
       // Then I should only have this character in display
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toEqual(expected);
         done();
       });
@@ -80,11 +70,11 @@ describe(CalculatorComponent.name, () => {
       const expected = Operator.Add;
 
       // When I call the addToOperation function with only this character then i change
-      component.addToOperation(firstInserted);
-      component.addToOperation(expected);
+      spectator.component.addToOperation(firstInserted);
+      spectator.component.addToOperation(expected);
 
       // Then I should only have this character in display
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toEqual(expected);
         done();
       });
@@ -94,10 +84,10 @@ describe(CalculatorComponent.name, () => {
       const expected = Operator.Multiply;
 
       // When I call the addToOperation function with only this character
-      component.addToOperation(expected);
+      spectator.component.addToOperation(expected);
 
       // Then I should only have this character in display
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toEqual('');
         done();
       });
@@ -107,10 +97,10 @@ describe(CalculatorComponent.name, () => {
       const expected = Operator.Divide;
 
       // When I call the addToOperation function with only this character
-      component.addToOperation(expected);
+      spectator.component.addToOperation(expected);
 
       // Then I should only have this character in display
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toEqual('');
         done();
       });
@@ -121,11 +111,11 @@ describe(CalculatorComponent.name, () => {
       const operator = Operator.Multiply;
 
       // When I call the addToOperation function with only this character then i change
-      component.addToOperation(expected);
-      component.addToOperation(operator);
+      spectator.component.addToOperation(expected);
+      spectator.component.addToOperation(operator);
 
       // Then I should only have this character in display
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toEqual(expected);
         done();
       });
@@ -135,51 +125,51 @@ describe(CalculatorComponent.name, () => {
       const expected = '1+2*2';
 
       // When i call the operation multiple time to simulate click on buttons
-      component.addToOperation(1);
-      component.addToOperation(Operator.Add);
-      component.addToOperation(2);
-      component.addToOperation(Operator.Multiply);
-      component.addToOperation(2);
+      spectator.component.addToOperation(1);
+      spectator.component.addToOperation(Operator.Add);
+      spectator.component.addToOperation(2);
+      spectator.component.addToOperation(Operator.Multiply);
+      spectator.component.addToOperation(2);
 
       // Then I should have the entire operation in display
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toEqual(expected);
         done();
       });
     });
     it('should replace display when computing operation and retyping a number', (done) => {
       // Given i have an operation computed
-      component.addToOperation(1);
-      component.addToOperation(Operator.Add);
-      component.addToOperation(2);
-      component.addToOperation(Operator.Multiply);
-      component.addToOperation(2);
-      component.computeOperation();
+      spectator.component.addToOperation(1);
+      spectator.component.addToOperation(Operator.Add);
+      spectator.component.addToOperation(2);
+      spectator.component.addToOperation(Operator.Multiply);
+      spectator.component.addToOperation(2);
+      spectator.component.computeOperation();
 
       // When i enter a new number
-      component.addToOperation(1);
+      spectator.component.addToOperation(1);
 
       // Then the display should be this number only
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('1');
         done();
       });
     });
     it('should keep computed value and add operator when computing operation and typing an operator', (done) => {
       // Given i have an operation computed
-      component.addToOperation(1);
-      component.addToOperation(Operator.Add);
-      component.addToOperation(2);
-      component.addToOperation(Operator.Multiply);
-      component.addToOperation(2);
-      component.computeOperation();
+      spectator.component.addToOperation(1);
+      spectator.component.addToOperation(Operator.Add);
+      spectator.component.addToOperation(2);
+      spectator.component.addToOperation(Operator.Multiply);
+      spectator.component.addToOperation(2);
+      spectator.component.computeOperation();
 
       // When i enter a new number
-      component.addToOperation(Operator.Subtract);
-      component.addToOperation(1);
+      spectator.component.addToOperation(Operator.Subtract);
+      spectator.component.addToOperation(1);
 
       // Then the display should be this number only
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('5-1');
         done();
       });
@@ -189,21 +179,21 @@ describe(CalculatorComponent.name, () => {
   describe(nameof<CalculatorComponent>('clear'), () => {
     it('should clear current operation and result', (done) => {
       // Given i have an operation in progress
-      component.addToOperation(1);
-      component.addToOperation(Operator.Add);
-      component.addToOperation(2);
-      component.addToOperation(Operator.Multiply);
-      component.addToOperation(2);
+      spectator.component.addToOperation(1);
+      spectator.component.addToOperation(Operator.Add);
+      spectator.component.addToOperation(2);
+      spectator.component.addToOperation(Operator.Multiply);
+      spectator.component.addToOperation(2);
 
       // When i call the clear method
-      component.clear();
+      spectator.component.clear();
 
       // Then i should have nothing in the display
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('');
         done();
       });
-      component.operationResult$.subscribe((r) => {
+      spectator.component.operationResult$.subscribe((r) => {
         expect(r).toBe('');
         done();
       });
@@ -213,10 +203,10 @@ describe(CalculatorComponent.name, () => {
   describe(nameof<CalculatorComponent>('backspace'), () => {
     it('should do nothing if there is no operation', (done) => {
       // When i call the backspace method
-      component.backspace();
+      spectator.component.backspace();
 
       // Then the operation should still be empty and no error should have thrown
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('');
         done();
       });
@@ -224,17 +214,17 @@ describe(CalculatorComponent.name, () => {
 
     it('should remove last operation character', (done) => {
       // Given i have an operation in progress
-      component.addToOperation(1);
-      component.addToOperation(Operator.Add);
-      component.addToOperation(2);
-      component.addToOperation(Operator.Multiply);
-      component.addToOperation(2);
+      spectator.component.addToOperation(1);
+      spectator.component.addToOperation(Operator.Add);
+      spectator.component.addToOperation(2);
+      spectator.component.addToOperation(Operator.Multiply);
+      spectator.component.addToOperation(2);
 
       // When i call the backspace method
-      component.backspace();
+      spectator.component.backspace();
 
       // Then the last character of the operation should have been removed
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('1+2*');
         done();
       });
@@ -244,22 +234,22 @@ describe(CalculatorComponent.name, () => {
   describe(nameof<CalculatorComponent>('computeOperation'), () => {
     it('should update operation display with result value and reset result display', (done) => {
       // Given i have an operation in progress
-      component.addToOperation(1);
-      component.addToOperation(Operator.Add);
-      component.addToOperation(2);
-      component.addToOperation(Operator.Multiply);
-      component.addToOperation(2);
+      spectator.component.addToOperation(1);
+      spectator.component.addToOperation(Operator.Add);
+      spectator.component.addToOperation(2);
+      spectator.component.addToOperation(Operator.Multiply);
+      spectator.component.addToOperation(2);
 
       // When i call the compute function
-      component.computeOperation();
+      spectator.component.computeOperation();
 
       // Then the result should have been emptied
-      component.operationResult$.subscribe((r) => {
+      spectator.component.operationResult$.subscribe((r) => {
         expect(r).toBe('');
         done();
       });
       // And the display should have been updated
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('5');
         done();
       });
@@ -273,7 +263,7 @@ describe(CalculatorComponent.name, () => {
       window.dispatchEvent(keyUpEvent);
 
       // Then the display should have a 0 appended
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('0');
         done();
       });
@@ -284,7 +274,7 @@ describe(CalculatorComponent.name, () => {
       window.dispatchEvent(keyUpEvent);
 
       // Then the display should have a 1 appended
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('1');
         done();
       });
@@ -295,7 +285,7 @@ describe(CalculatorComponent.name, () => {
       window.dispatchEvent(keyUpEvent);
 
       // Then the display should have a 2 appended
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('2');
         done();
       });
@@ -306,7 +296,7 @@ describe(CalculatorComponent.name, () => {
       window.dispatchEvent(keyUpEvent);
 
       // Then the display should have a 3 appended
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('3');
         done();
       });
@@ -317,7 +307,7 @@ describe(CalculatorComponent.name, () => {
       window.dispatchEvent(keyUpEvent);
 
       // Then the display should have a 4 appended
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('4');
         done();
       });
@@ -328,7 +318,7 @@ describe(CalculatorComponent.name, () => {
       window.dispatchEvent(keyUpEvent);
 
       // Then the display should have a 5 appended
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('5');
         done();
       });
@@ -339,7 +329,7 @@ describe(CalculatorComponent.name, () => {
       window.dispatchEvent(keyUpEvent);
 
       // Then the display should have a 6 appended
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('6');
         done();
       });
@@ -350,7 +340,7 @@ describe(CalculatorComponent.name, () => {
       window.dispatchEvent(keyUpEvent);
 
       // Then the display should have a 7 appended
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('7');
         done();
       });
@@ -361,7 +351,7 @@ describe(CalculatorComponent.name, () => {
       window.dispatchEvent(keyUpEvent);
 
       // Then the display should have a 8 appended
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('8');
         done();
       });
@@ -372,7 +362,7 @@ describe(CalculatorComponent.name, () => {
       window.dispatchEvent(keyUpEvent);
 
       // Then the display should have a 9 appended
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('9');
         done();
       });
@@ -383,7 +373,7 @@ describe(CalculatorComponent.name, () => {
       window.dispatchEvent(keyUpEvent);
 
       // Then the display should have a . appended
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('.');
         done();
       });
@@ -394,7 +384,7 @@ describe(CalculatorComponent.name, () => {
       window.dispatchEvent(keyUpEvent);
 
       // Then the display should have a + appended
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe(Operator.Add);
         done();
       });
@@ -405,82 +395,82 @@ describe(CalculatorComponent.name, () => {
       window.dispatchEvent(keyUpEvent);
 
       // Then the display should have a - appended
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe(Operator.Subtract);
         done();
       });
     });
     it('should add / when typing on the numpad /', (done) => {
       // Given there is an operation in progress
-      component.addToOperation(1);
+      spectator.component.addToOperation(1);
       // and the user type on the numpad / key
       keyUpKeyCodeMock.mockReturnValue(KeyCodes.NumpadDivide);
       window.dispatchEvent(keyUpEvent);
 
       // Then the display should have a / appended
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('1/');
         done();
       });
     });
     it('should add * when typing on the numpad *', (done) => {
       // Given there is an operation in progress
-      component.addToOperation(1);
+      spectator.component.addToOperation(1);
       // and the user type on the numpad / key
       keyUpKeyCodeMock.mockReturnValue(KeyCodes.NumpadMultiply);
       window.dispatchEvent(keyUpEvent);
 
       // Then the display should have a * appended
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('1*');
         done();
       });
     });
     it('should add compute value when typing on enter', (done) => {
       // Given there is an operation in progress
-      component.addToOperation(1);
-      component.addToOperation(Operator.Add);
-      component.addToOperation(1);
+      spectator.component.addToOperation(1);
+      spectator.component.addToOperation(Operator.Add);
+      spectator.component.addToOperation(1);
       // and the user type on the enter key
       keyUpKeyCodeMock.mockReturnValue(KeyCodes.Enter);
       window.dispatchEvent(keyUpEvent);
 
       // Then the display should have been computed
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('2');
         done();
       });
     });
     it('should remove last character when typing on the backspace', (done) => {
       // Given there is an operation in progress
-      component.addToOperation(1);
-      component.addToOperation(Operator.Add);
-      component.addToOperation(1);
+      spectator.component.addToOperation(1);
+      spectator.component.addToOperation(Operator.Add);
+      spectator.component.addToOperation(1);
       // and the user type on the enter key
       keyUpKeyCodeMock.mockReturnValue(KeyCodes.Backspace);
       window.dispatchEvent(keyUpEvent);
 
       // Then the display's last character should have been deleted
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('1+');
         done();
       });
     });
     it('should clear everything when typing on the delete key', (done) => {
       // Given there is an operation in progress
-      component.addToOperation(1);
-      component.addToOperation(Operator.Add);
-      component.addToOperation(1);
+      spectator.component.addToOperation(1);
+      spectator.component.addToOperation(Operator.Add);
+      spectator.component.addToOperation(1);
       // and the user type on the enter key
       keyUpKeyCodeMock.mockReturnValue(KeyCodes.Delete);
       window.dispatchEvent(keyUpEvent);
 
       // Then the display should have  been cleared
-      component.currentOperation$.subscribe((r) => {
+      spectator.component.currentOperation$.subscribe((r) => {
         expect(r).toBe('');
         done();
       });
-      component.operationResult$.subscribe((r) => {
+      spectator.component.operationResult$.subscribe((r) => {
         expect(r).toBe('');
         done();
       });

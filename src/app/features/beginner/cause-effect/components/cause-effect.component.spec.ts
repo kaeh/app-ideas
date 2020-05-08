@@ -1,23 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
+import { CauseEffectModule } from '../cause-effect.module';
 import { CauseEffectComponent } from './cause-effect.component';
 
 describe(CauseEffectComponent.name, () => {
-  let component: CauseEffectComponent;
-  let fixture: ComponentFixture<CauseEffectComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [CauseEffectComponent],
-    }).compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CauseEffectComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  let spectator: Spectator<CauseEffectComponent>;
+  const createComponent = createComponentFactory({
+    component: CauseEffectComponent,
+    imports: [CauseEffectModule],
+    declareComponent: false,
   });
+  beforeEach(() => (spectator = createComponent()));
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeTruthy();
   });
 });

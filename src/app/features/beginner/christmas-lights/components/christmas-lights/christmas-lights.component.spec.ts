@@ -1,23 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
+import { ChristmasLightsModule } from '../../christmas-lights.module';
 import { ChristmasLightsComponent } from './christmas-lights.component';
 
 describe(ChristmasLightsComponent.name, () => {
-  let component: ChristmasLightsComponent;
-  let fixture: ComponentFixture<ChristmasLightsComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ChristmasLightsComponent],
-    }).compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ChristmasLightsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  let spectator: Spectator<ChristmasLightsComponent>;
+  const createComponent = createComponentFactory({
+    component: ChristmasLightsComponent,
+    imports: [ChristmasLightsModule],
+    declareComponent: false,
   });
+  beforeEach(() => (spectator = createComponent()));
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeTruthy();
   });
 });

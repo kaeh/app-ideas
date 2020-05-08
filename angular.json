@@ -6,8 +6,9 @@
     "app-ideas": {
       "projectType": "application",
       "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
+        "@ngneat/spectator:spectator-component": {
+          "style": "scss",
+          "jest": true
         }
       },
       "root": "",
@@ -144,5 +145,8 @@
       }
     }
   },
-  "defaultProject": "app-ideas"
+  "defaultProject": "app-ideas",
+  "cli": {
+    "defaultCollection": "@ngneat/spectator"
+  }
 }
