@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CauseEffectComponent } from './components/cause-effect.component';
+import { CauseEffectComponent } from './components/cause-effect/cause-effect.component';
 
 const routes: Routes = [{ path: '', component: CauseEffectComponent }];
 
