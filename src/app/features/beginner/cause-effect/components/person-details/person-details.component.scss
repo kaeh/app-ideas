@@ -1,0 +1,9 @@
+div {
+  &:not(:last-child) {
+    margin-bottom: 5px;
+  }
+
+  &.name {
+    font-size: 1.2rem;
+  }
+}

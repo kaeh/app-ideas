@@ -1,1 +1,13 @@
-<p>person-details works!</p>
+<ng-container *ngIf="person$ | async as person; else noPersonSelected">
+  <div class="name">{{ person.name }}</div>
+  <div>Born on {{ person.birthday | date: 'longDate' }}</div>
+  <div>Live at {{ person.street }}, {{ person.city }}, {{ person.state }}</div>
+  <div>Contact: {{ person.telephone }}</div>
+</ng-container>
+<ng-template #noPersonSelected>
+  <p>
+    There is currently no person selected.
+    <br />
+    You can select on by clicking on a name on the right hand of the page.
+  </p>
+</ng-template>
