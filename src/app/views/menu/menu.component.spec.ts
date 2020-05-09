@@ -81,8 +81,8 @@ describe(MenuComponent.name, () => {
       // Then the selected exercise should be have been set
       exerciseStateServiceMock.selectedExerciseChange$.subscribe((e) => {
         expect(e).toEqual({
-          title: expect.any(String),
-          markdownPath: expect.any(String),
+          title: jasmine.any(String),
+          markdownPath: jasmine.any(String),
           routerLink: ['beginner/bin-2-dec'],
         });
         done();
