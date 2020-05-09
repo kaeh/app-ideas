@@ -77,6 +77,7 @@
       "<rootDir>/src/app/**/{!(*.module|index),}.ts"
     ],
     "moduleNameMapper": {
+      "^@kaeh/cause-effect/(.*)$": "<rootDir>/src/app/features/beginner/cause-effect/$1",
       "^@kaeh/(.*)$": "<rootDir>/src/app/$1"
     }
   }
